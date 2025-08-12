@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 void CheckIntInput(int& choice);
 void FirstInterface();
@@ -8,34 +9,36 @@ int Interface = 0;
 class USER
 {
 private:
-	string Name[100];
-	int ID[100];
-	int CodePass[100];
-	float amount[100];
+	vector<string> Name;
+	vector<int> ID;
+	vector<int> CodePass;
+	vector<float> amount;
 public:
-	int size = 0;
 	int CheckAmount = -1;
 	void AddUser()
 	{
-		int HideChar;
-		string HidePass;
+		string nm;
+		int id;
+		int cp;
 		cout << "Add a new account" << endl;
 		cout << "Name :";
 		cin.ignore();
-		getline(cin, Name[size]);
+		getline(cin, nm);
+		Name.push_back(nm);
 		cout << "\nID :";
-		cin >> ID[size];
-		CheckIntInput(ID[size]);
+		cin >> id;
+		CheckIntInput(id);
+		ID.push_back(id);
 		cout << "\nCodePass :" << endl;
-		cin >> CodePass[size];
-		CheckIntInput(CodePass[size]);
-		amount[size] = 0.0f;
-		size++;
+		cin >> cp;
+		CheckIntInput(cp);
+		CodePass.push_back(cp);
+		amount.push_back(0.0f);
 	}
 	void LoginUser()
 	{
 		int bck;
-		if (size == 0)
+		if (Name.size() == 0)
 		{
 			cout << "there is no accounts yet.\n=====Enter 1 to be back :";
 			cin >> bck;
@@ -57,13 +60,13 @@ public:
 			cout << "\nCodePass :";
 			cin >> CP;
 			CheckIntInput(CP);
-			for (int i = 0; i < size; i++)
+			for (size_t i = 0; i < ID.size(); i++)
 			{
 				if (ID[i] == id && CodePass[i] == CP)
 				{
 					CheckFound = true;
 					Interface++;
-					CheckAmount = i;
+					CheckAmount = static_cast<int>(i);
 					nm = Name[i];
 				}
 			}
@@ -101,7 +104,6 @@ public:
 			bool test = true;
 			cin >> bck;
 			CheckIntInput(bck);
-			
 			while (test)
 			{
 				switch (bck)
@@ -110,6 +112,7 @@ public:
 				case 1:
 					if (amount[CheckAmount] >= 200) {
 						amount[CheckAmount] -= 200;
+						cout << "you withdraw $200 from atm." << endl;
 						test = false;
 						break;
 					}
@@ -123,6 +126,7 @@ public:
 				case 2:
 					if (amount[CheckAmount] >= 500) {
 					amount[CheckAmount] -= 500;
+					cout << "you withdraw $500 from atm." << endl;
 					test = false;
 					break;
 					}
@@ -137,6 +141,7 @@ public:
 					if (amount[CheckAmount] >= 1000)
 					{
 						amount[CheckAmount] -= 1000;
+						cout << "you withdraw $1000 from atm." << endl;
 						test = false;
 						break;
 					}
@@ -151,6 +156,7 @@ public:
 					if (amount[CheckAmount] >= 2000)
 					{
 						amount[CheckAmount] -= 2000;
+						cout << "you withdraw $2000 from atm." << endl;
 						test = false;
 						break;
 					}
@@ -200,6 +206,7 @@ public:
 				case 1:
 					
 						amount[CheckAmount] += 200;
+						cout << "you deposited $200 in the bank" << endl;
 						test = false;
 						break;
 					
@@ -207,6 +214,7 @@ public:
 				case 2:
 					
 						amount[CheckAmount] += 500;
+						cout << "you deposited $500 in the bank" << endl;
 						test = false;
 						break;
 					
@@ -215,6 +223,7 @@ public:
 				case 3:
 					
 						amount[CheckAmount] += 1000;
+						cout << "you deposited $1000 in the bank" << endl;
 						test = false;
 						break;
 					
@@ -222,12 +231,14 @@ public:
 				case 4:
 				
 						amount[CheckAmount] += 2000;
+						cout << "you deposited $2000 in the bank" << endl;
 						test = false;
 						break;
 					
 				case 5:
 					
 						amount[CheckAmount] += 5000;
+						cout << "you deposited $5000 in the bank" << endl;
 						test = false;
 						break;
 				default:
@@ -247,9 +258,11 @@ public:
 void CheckIntInput(int& choice)
 {
 	while (cin.fail()) {
-		cout << "Invalid input. Try again but only numbers: ";
+		cout << "Invalid input. Try again but only numbers: "<<endl;
 		cin.clear();
 		cin.ignore(10000, '\n');
+		cout << "enter only numbers :";
+		cin >> choice;
 	}
 }
 int main()
@@ -262,7 +275,6 @@ int main()
 		if (Interface == 0)
 		{
 			FirstInterface();
-			cin>>choice;
 			CheckIntInput(choice);
 			switch (choice)
 			{
@@ -280,7 +292,6 @@ int main()
 				if (choice > 3)
 				{
 					cout << "Not a valid number from the list ." << endl;
-					cout << "enter a num :";
 					break;
 				}
 				
@@ -289,7 +300,6 @@ int main()
 		else if (Interface != 0)
 		{
 			SecondInterface();
-			cin >> choice;
 			CheckIntInput(choice);
 			switch (choice)
 			{

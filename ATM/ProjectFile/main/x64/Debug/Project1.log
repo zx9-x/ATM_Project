@@ -1,7 +1,6 @@
 ﻿  main.cpp
-C:\Users\PC GAMER\Documents\C++\ATM\ProjectFile\main.cpp(44,13): warning C4566: character represented by universal-character-name '\U0001F940' cannot be represented in the current code page (1252)
-C:\Users\PC GAMER\Documents\C++\ATM\ProjectFile\main.cpp(44,13): warning C4566: character represented by universal-character-name '\U0001F494' cannot be represented in the current code page (1252)
-C:\Users\PC GAMER\Documents\C++\ATM\ProjectFile\main.cpp(20,7): warning C4101: 'HideChar': unreferenced local variable
+C:\Users\PC GAMER\Documents\C++\ATM\ProjectFile\main.cpp(47,13): warning C4566: character represented by universal-character-name '\U0001F940' cannot be represented in the current code page (1252)
+C:\Users\PC GAMER\Documents\C++\ATM\ProjectFile\main.cpp(47,13): warning C4566: character represented by universal-character-name '\U0001F494' cannot be represented in the current code page (1252)
   Project1.vcxproj -> C:\Users\PC GAMER\Documents\C++\ATM\ProjectFile\x64\Debug\main.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
