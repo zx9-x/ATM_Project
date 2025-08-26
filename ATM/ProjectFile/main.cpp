@@ -29,7 +29,7 @@ public:
 		cin >> id;
 		CheckIntInput(id);
 		ID.push_back(id);
-		cout << "\nCodePass :" << endl;
+		cout << "\nCodePass :";
 		cin >> cp;
 		CheckIntInput(cp);
 		CodePass.push_back(cp);
@@ -108,7 +108,7 @@ public:
 			{
 				switch (bck)
 				{
-					
+
 				case 1:
 					if (amount[CheckAmount] >= 200) {
 						amount[CheckAmount] -= 200;
@@ -122,13 +122,13 @@ public:
 						test = false;
 						break;
 					}
-					
+
 				case 2:
 					if (amount[CheckAmount] >= 500) {
-					amount[CheckAmount] -= 500;
-					cout << "you withdraw $500 from atm." << endl;
-					test = false;
-					break;
+						amount[CheckAmount] -= 500;
+						cout << "you withdraw $500 from atm." << endl;
+						test = false;
+						break;
 					}
 					else
 					{
@@ -136,7 +136,7 @@ public:
 						test = false;
 						break;
 					}
-					
+
 				case 3:
 					if (amount[CheckAmount] >= 1000)
 					{
@@ -151,7 +151,7 @@ public:
 						test = false;
 						break;
 					}
-					
+
 				case 4:
 					if (amount[CheckAmount] >= 2000)
 					{
@@ -171,7 +171,7 @@ public:
 					{
 						cout << "Not a valid number from the list ." << endl;
 						cout << "enter a num :";
-						cin>>bck;
+						cin >> bck;
 						CheckIntInput(bck);
 					}
 					break;
@@ -187,78 +187,78 @@ public:
 	}
 	void DepositMoney()
 	{
-		
-			int bck;
-			cout << "1. 200DH" << endl;
-			cout << "2. 500DH" << endl;
-			cout << "3. 1000DH" << endl;
-			cout << "4. 2000DH" << endl;
-			cout << "5. 5000DH" << endl;
-			cout << "enter a number:";
-			bool test = true;
-			cin >> bck;
-			CheckIntInput(bck);
-			while (test)
+
+		int bck;
+		cout << "1. 200DH" << endl;
+		cout << "2. 500DH" << endl;
+		cout << "3. 1000DH" << endl;
+		cout << "4. 2000DH" << endl;
+		cout << "5. 5000DH" << endl;
+		cout << "enter a number:";
+		bool test = true;
+		cin >> bck;
+		CheckIntInput(bck);
+		while (test)
+		{
+			switch (bck)
 			{
-				switch (bck)
+
+			case 1:
+
+				amount[CheckAmount] += 200;
+				cout << "you deposited $200 in the bank" << endl;
+				test = false;
+				break;
+
+
+			case 2:
+
+				amount[CheckAmount] += 500;
+				cout << "you deposited $500 in the bank" << endl;
+				test = false;
+				break;
+
+
+
+			case 3:
+
+				amount[CheckAmount] += 1000;
+				cout << "you deposited $1000 in the bank" << endl;
+				test = false;
+				break;
+
+
+			case 4:
+
+				amount[CheckAmount] += 2000;
+				cout << "you deposited $2000 in the bank" << endl;
+				test = false;
+				break;
+
+			case 5:
+
+				amount[CheckAmount] += 5000;
+				cout << "you deposited $5000 in the bank" << endl;
+				test = false;
+				break;
+			default:
+				if (bck > 5)
 				{
-
-				case 1:
-					
-						amount[CheckAmount] += 200;
-						cout << "you deposited $200 in the bank" << endl;
-						test = false;
-						break;
-					
-
-				case 2:
-					
-						amount[CheckAmount] += 500;
-						cout << "you deposited $500 in the bank" << endl;
-						test = false;
-						break;
-					
-					
-
-				case 3:
-					
-						amount[CheckAmount] += 1000;
-						cout << "you deposited $1000 in the bank" << endl;
-						test = false;
-						break;
-					
-
-				case 4:
-				
-						amount[CheckAmount] += 2000;
-						cout << "you deposited $2000 in the bank" << endl;
-						test = false;
-						break;
-					
-				case 5:
-					
-						amount[CheckAmount] += 5000;
-						cout << "you deposited $5000 in the bank" << endl;
-						test = false;
-						break;
-				default:
-					if (bck > 5)
-					{
-						cout << "Not a valid number from the list ." << endl;
-						cout << "enter a num :";
-						cin >> bck;
-						CheckIntInput(bck);
-					}
-					break;
+					cout << "Not a valid number from the list ." << endl;
+					cout << "enter a num :";
+					cin >> bck;
+					CheckIntInput(bck);
 				}
-			
+				break;
+			}
+
 		}
 	}
 };
 void CheckIntInput(int& choice)
 {
 	while (cin.fail()) {
-		cout << "Invalid input. Try again but only numbers: "<<endl;
+		cout << "Invalid input. Try again but only numbers: " << endl;
 		cin.clear();
 		cin.ignore(10000, '\n');
 		cout << "enter only numbers :";
@@ -268,13 +268,14 @@ void CheckIntInput(int& choice)
 int main()
 {
 	USER us;
-	int choice ;
-	
+	int choice;
+
 	while (true)
 	{
 		if (Interface == 0)
 		{
 			FirstInterface();
+			cin >> choice;
 			CheckIntInput(choice);
 			switch (choice)
 			{
@@ -294,12 +295,13 @@ int main()
 					cout << "Not a valid number from the list ." << endl;
 					break;
 				}
-				
+
 			}
 		}
 		else if (Interface != 0)
 		{
 			SecondInterface();
+			cin >> choice;
 			CheckIntInput(choice);
 			switch (choice)
 			{
@@ -325,7 +327,7 @@ int main()
 				{
 					cout << "Not a valid number from the list ." << endl;
 					cout << "enter a num :";
-					
+
 				}
 				break;
 			}
